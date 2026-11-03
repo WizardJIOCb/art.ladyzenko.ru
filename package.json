@@ -1,0 +1,9 @@
+{
+  "name": "art-ladyzenko-ru",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "check": "node tools/check.mjs",
+    "smoke": "node tools/smoke.mjs"
+  }
+}

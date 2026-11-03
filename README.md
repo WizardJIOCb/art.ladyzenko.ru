@@ -1,0 +1,68 @@
+# art.ladyzenko.ru
+
+Два исходных лендинга в одном статическом сайте:
+
+| Адрес | Исходная версия | Файлы проекта |
+| --- | --- | --- |
+| https://art.ladyzenko.ru/ | `C:\Projects\DeepSeek\paint-landing` | `public/` |
+| https://art.ladyzenko.ru/new/ | `C:\Projects\DeepSeek\Test-1` | `public/new/` |
+
+Исходные каталоги сохранены без изменений. В общий проект перенесены только
+публичные HTML, CSS, JS и SVG; служебные плагины, логи и снимки не публикуются.
+В подвале каждой версии есть ссылка на другую. Для `/new` сервер добавляет
+завершающий `/`, сохраняя параметры запроса, чтобы относительные ресурсы
+и изображения галереи работали корректно. Отсутствующие страницы возвращают 404.
+
+## Локальный просмотр и проверка
+
+Node.js 22+ и Python 3; установка npm-зависимостей не нужна.
+
+```powershell
+py -3 -m http.server 8765 --bind 127.0.0.1 --directory public
+npm run check
+npm run smoke
+```
+
+`check` проверяет локальные ссылки и якоря. `smoke` запускает отдельный
+headless Chrome, проверяет обе страницы на 1440 и 390 px, меню, галереи,
+слайдер основной версии, ошибки JS и ответы ресурсов. Снимки пишутся в `shots/`.
+Путь к Chrome можно задать переменной `CHROME_PATH`.
+
+Проверка опубликованного сайта:
+
+```powershell
+node tools/smoke.mjs https://art.ladyzenko.ru
+```
+
+## Размещение
+
+Сервер: `82.146.42.213`, SSH alias `myserver`.
+Каталог: `/var/www/art.ladyzenko.ru`.
+Nginx раздаёт только `current`, который указывает на `releases/<commit>/public`.
+Исходники, инструменты и Git недоступны через веб.
+
+После коммита и отправки в GitHub:
+
+```powershell
+$revision = git rev-parse HEAD
+git archive --format=tar.gz --output=.scratch/release.tar.gz HEAD public deploy
+scp .scratch/release.tar.gz myserver:/tmp/art-ladyzenko-release.tar.gz
+scp deploy/release.sh myserver:/tmp/art-ladyzenko-release.sh
+ssh myserver "bash /tmp/art-ladyzenko-release.sh $revision /tmp/art-ladyzenko-release.tar.gz"
+```
+
+Перед первым выпуском сертификата проверить публичную A-запись домена
+через `1.1.1.1` и `8.8.8.8`, отсутствие конфликтующей AAAA-записи.
+Скрипт сохраняет конфигурацию Nginx в `/var/backups/art.ladyzenko.ru/<UTC>/`,
+переключает символьную ссылку, проверяет Nginx и применяет конфигурацию.
+При первом запуске проверяет публичный HTTP ACME webroot и выпускает сертификат
+Let's Encrypt. Продление использует системный `certbot.timer` и существующий
+deploy hook перезагрузки Nginx. Старые релизы сохраняются для отката.
+
+## Ограничения исходников
+
+Обе формы демонстрационные: сообщение об успешной отправке показывается
+локально в браузере, HTTP-запрос не выполняется. Сервер приёма заявок отсутствует.
+Контакты, адрес, цены, отзывы, ИНН и прочие тексты перенесены из исходников,
+их достоверность не проверялась. Подключение реального приёма заявок и замена
+демонстрационных данных требуют отдельной задачи.

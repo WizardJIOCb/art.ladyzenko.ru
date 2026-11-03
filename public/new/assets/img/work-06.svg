@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" role="img" aria-label="Пастель: утро в мастерской, свет из окна">
+  <defs>
+    <linearGradient id="wall6" x1="0" y1="0" x2=".3" y2="1">
+      <stop offset="0" stop-color="#EFE2CC"/>
+      <stop offset="1" stop-color="#E2D2B6"/>
+    </linearGradient>
+    <linearGradient id="sky6" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#CFE0DC"/>
+      <stop offset=".55" stop-color="#E5DFC4"/>
+      <stop offset="1" stop-color="#F0DFBB"/>
+    </linearGradient>
+    <linearGradient id="floor6" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#C9AE86"/>
+      <stop offset="1" stop-color="#A98D69"/>
+    </linearGradient>
+    <radialGradient id="beam6" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#FFF3D2" stop-opacity=".85"/>
+      <stop offset="1" stop-color="#FFF3D2" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="b6" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="14"/>
+    </filter>
+    <filter id="b6s" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+    <filter id="n6">
+      <feTurbulence type="fractalNoise" baseFrequency=".7" numOctaves="4" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="800" fill="url(#wall6)"/>
+
+  <!-- window -->
+  <g>
+    <rect x="196" y="96" width="330" height="404" fill="url(#sky6)"/>
+    <circle cx="440" cy="180" r="150" fill="url(#beam6)"/>
+    <path d="M196 96 h330 v404 h-330 z" fill="none" stroke="#8E7757" stroke-width="10"/>
+    <path d="M361 96 v404 M196 300 h330" stroke="#8E7757" stroke-width="8"/>
+    <path d="M196 96 h330 v404 h-330 z" fill="none" stroke="#6E5A40" stroke-width="2" opacity=".5"/>
+    <rect x="182" y="492" width="358" height="16" fill="#C6A97F" stroke="#8E7757" stroke-width="2"/>
+  </g>
+
+  <!-- dust light -->
+  <path d="M210 500 L560 500 L700 800 L120 800 Z" fill="#FFF0CE" opacity=".3" filter="url(#b6)"/>
+
+  <!-- curtain -->
+  <path d="M540 96 C 560 200 552 330 566 500 L620 500 C 606 330 616 200 600 96 Z" fill="#DCC7A6" opacity=".95"/>
+  <path d="M556 120 C 566 220 560 340 570 480" stroke="#C2A983" stroke-width="6" opacity=".5" fill="none" filter="url(#b6s)"/>
+
+  <!-- floor -->
+  <path d="M0 610 H800 V800 H0 Z" fill="url(#floor6)"/>
+  <path d="M0 610 H800" stroke="#8E7757" stroke-width="3" opacity=".5"/>
+
+  <!-- table -->
+  <g>
+    <ellipse cx="520" cy="640" rx="230" ry="34" fill="#8E6F4C" opacity=".28" filter="url(#b6s)"/>
+    <path d="M300 628 H760 V690 H300 Z" fill="#D7B98C" stroke="#94764F" stroke-width="3"/>
+    <path d="M300 628 H760" stroke="#F0DCB6" stroke-width="3" opacity=".6"/>
+    <rect x="330" y="690" width="16" height="90" fill="#B4936A"/>
+    <rect x="716" y="690" width="16" height="90" fill="#B4936A"/>
+  </g>
+
+  <!-- cup -->
+  <g>
+    <ellipse cx="620" cy="628" rx="52" ry="10" fill="#7E6444" opacity=".3"/>
+    <path d="M580 578 h76 l-8 48 h-60 z" fill="#F1E6D2" stroke="#A98D69" stroke-width="2.4"/>
+    <ellipse cx="618" cy="578" rx="38" ry="9" fill="#B89B72"/>
+    <path d="M656 588 c 22 0 26 22 6 26" fill="none" stroke="#A98D69" stroke-width="6"/>
+    <path d="M604 560 c 6 -14 -6 -20 0 -32" fill="none" stroke="#CDB593" stroke-width="3" opacity=".7" filter="url(#b6s)"/>
+  </g>
+
+  <!-- jar of brushes -->
+  <g>
+    <ellipse cx="400" cy="626" rx="40" ry="8" fill="#7E6444" opacity=".3"/>
+    <path d="M372 570 h56 v52 h-56 z" fill="#CFD8CE" stroke="#8E9C90" stroke-width="2" opacity=".85"/>
+    <g stroke="#8A6A45" stroke-width="3.4" stroke-linecap="round">
+      <path d="M384 566 L372 512"/>
+      <path d="M396 566 L394 500"/>
+      <path d="M408 566 L420 508"/>
+      <path d="M418 566 L436 522"/>
+    </g>
+    <g stroke="#3E3A34" stroke-width="4" stroke-linecap="round">
+      <path d="M370 510 l-4 -12"/>
+      <path d="M393 498 l-2 -12"/>
+      <path d="M421 506 l4 -12"/>
+    </g>
+  </g>
+
+  <!-- plant -->
+  <g>
+    <path d="M180 690 c -8 -60 4 -108 26 -140" fill="none" stroke="#6B7B5C" stroke-width="4"/>
+    <ellipse cx="212" cy="540" rx="44" ry="26" fill="#7E8F68" opacity=".8" transform="rotate(-18 212 540)"/>
+    <ellipse cx="176" cy="580" rx="38" ry="22" fill="#8C9C74" opacity=".75" transform="rotate(16 176 580)"/>
+    <path d="M152 640 h64 l-8 52 h-48 z" fill="#C08A5E" stroke="#8E6138" stroke-width="2.4"/>
+  </g>
+
+  <!-- warm bloom -->
+  <ellipse cx="470" cy="330" rx="260" ry="230" fill="#FFEBC0" opacity=".18" filter="url(#b6)"/>
+
+  <rect width="800" height="800" filter="url(#n6)" opacity=".2" style="mix-blend-mode:multiply"/>
+</svg>

@@ -1,0 +1,6 @@
+.scratch/
+shots/
+*.tar.gz
+*.log
+node_modules/
+__pycache__/

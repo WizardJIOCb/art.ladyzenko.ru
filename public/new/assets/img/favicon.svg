@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="Школа рисования Анны Калимуллиной">
+  <rect width="48" height="48" rx="6" fill="#1B1917"/>
+  <path d="M12 34 L24 13 L36 34" fill="none" stroke="#F6F1E7" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M17.5 27 H30.5" stroke="#D8A03D" stroke-width="2.6" stroke-linecap="round"/>
+  <circle cx="24" cy="40" r="1.7" fill="#D8A03D"/>
+</svg>

@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 900" role="img" aria-label="Мастерская: мольберт, краски и кисти у окна">
+  <defs>
+    <linearGradient id="wallA" x1="0" y1="0" x2=".4" y2="1">
+      <stop offset="0" stop-color="#F3EADA"/>
+      <stop offset="1" stop-color="#E9DCC5"/>
+    </linearGradient>
+    <linearGradient id="skyA" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#CADCD8"/>
+      <stop offset="1" stop-color="#EBDFC1"/>
+    </linearGradient>
+    <linearGradient id="floorA" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#CBAF87"/>
+      <stop offset="1" stop-color="#B08F65"/>
+    </linearGradient>
+    <linearGradient id="paintA" x1="0" y1="0" x2=".3" y2="1">
+      <stop offset="0" stop-color="#F0D2A4"/>
+      <stop offset=".45" stop-color="#DB9C74"/>
+      <stop offset=".75" stop-color="#B4685A"/>
+      <stop offset="1" stop-color="#7A5750"/>
+    </linearGradient>
+    <radialGradient id="lightA" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#FFF4D6" stop-opacity=".9"/>
+      <stop offset="1" stop-color="#FFF4D6" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="bA" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="16"/>
+    </filter>
+    <filter id="nA">
+      <feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="900" fill="url(#wallA)"/>
+
+  <!-- arch on wall -->
+  <path d="M470 120 C 470 120 560 70 660 120 L660 560 L470 560 Z" fill="#EADCC4" opacity=".55"/>
+
+  <!-- window -->
+  <g>
+    <rect x="72" y="112" width="270" height="352" fill="url(#skyA)" stroke="#9C8563" stroke-width="10"/>
+    <path d="M207 112 v352 M72 288 h270" stroke="#9C8563" stroke-width="8"/>
+    <rect x="58" y="456" width="298" height="16" fill="#C9AE85" stroke="#9C8563" stroke-width="2"/>
+    <circle cx="150" cy="150" r="86" fill="url(#lightA)"/>
+  </g>
+  <path d="M96 474 L330 474 L470 830 L10 830 Z" fill="#FFF3D3" opacity=".26" filter="url(#bA)"/>
+
+  <!-- floor -->
+  <path d="M0 700 H800 V900 H0 Z" fill="url(#floorA)"/>
+  <path d="M0 700 H800" stroke="#8E7454" stroke-width="3" opacity=".45"/>
+
+  <!-- shelf -->
+  <g>
+    <rect x="520" y="196" width="230" height="10" fill="#C0A17A" stroke="#94764F" stroke-width="2"/>
+    <g>
+      <path d="M556 150 h28 v46 h-28 z" fill="#D8CBB0" stroke="#94764F" stroke-width="2"/>
+      <path d="M560 158 h20" stroke="#B5482B" stroke-width="4"/>
+      <path d="M606 132 h22 l-2 64 h-18 z" fill="#BFD0C8" stroke="#8E9C94" stroke-width="2"/>
+      <g stroke="#8A6A45" stroke-width="3" stroke-linecap="round">
+        <path d="M616 130 v-32"/><path d="M624 132 v-26"/>
+      </g>
+      <path d="M664 158 h50 v38 h-50 z" fill="#CBB28A" stroke="#94764F" stroke-width="2"/>
+      <circle cx="676" cy="186" r="5" fill="#B5482B"/>
+      <circle cx="694" cy="186" r="5" fill="#31514A"/>
+    </g>
+  </g>
+
+  <!-- easel -->
+  <g>
+    <ellipse cx="450" cy="812" rx="210" ry="26" fill="#8A6F4E" opacity=".3" filter="url(#bA)"/>
+    <g stroke="#9C7B52" stroke-width="11" stroke-linecap="round" fill="none">
+      <path d="M330 236 L268 812"/>
+      <path d="M596 236 L662 812"/>
+      <path d="M452 300 L452 830"/>
+    </g>
+    <path d="M300 640 H610" stroke="#9C7B52" stroke-width="10" stroke-linecap="round"/>
+
+    <!-- canvas -->
+    <rect x="286" y="196" width="352" height="360" fill="#FBF7EE" stroke="#B99B71" stroke-width="5"/>
+    <rect x="300" y="210" width="324" height="332" fill="url(#paintA)"/>
+    <circle cx="380" cy="300" r="46" fill="#FBE2B4" opacity=".9"/>
+    <path d="M300 430 C 360 402 410 424 470 410 C 530 396 580 418 624 404 L624 542 L300 542 Z" fill="#8A5B55" opacity=".7"/>
+    <path d="M300 470 C 380 452 440 474 520 458 C 570 448 600 460 624 454 L624 542 L300 542 Z" fill="#4B3B3B" opacity=".55"/>
+    <path d="M300 300 C 340 286 372 300 404 288" stroke="#F3C687" stroke-width="10" opacity=".4" stroke-linecap="round" fill="none"/>
+  </g>
+
+  <!-- palette -->
+  <g transform="translate(196 700) rotate(-8)">
+    <ellipse cx="0" cy="0" rx="86" ry="58" fill="#D9BE8F" stroke="#A9885C" stroke-width="3"/>
+    <ellipse cx="26" cy="6" rx="20" ry="14" fill="#E9D8B6"/>
+    <circle cx="-44" cy="-10" r="7" fill="#B5482B"/>
+    <circle cx="-24" cy="-26" r="7" fill="#D9A03F"/>
+    <circle cx="-6" cy="24" r="7" fill="#31514A"/>
+    <circle cx="-48" cy="24" r="6" fill="#5E6F8C"/>
+  </g>
+
+  <!-- brushes cup on floor -->
+  <g transform="translate(120 640)">
+    <path d="M-26 30 h52 v52 h-52 z" fill="#C7D2CB" stroke="#8E9C94" stroke-width="2"/>
+    <g stroke="#8A6A45" stroke-width="4" stroke-linecap="round">
+      <path d="M-14 30 L-28 -18"/>
+      <path d="M0 28 L4 -30"/>
+      <path d="M14 30 L30 -14"/>
+    </g>
+    <g stroke="#3E3A34" stroke-width="5" stroke-linecap="round">
+      <path d="M-29 -20 l-3 -12"/><path d="M4 -32 v-12"/><path d="M31 -16 l4 -12"/>
+    </g>
+  </g>
+
+  <!-- stool -->
+  <g stroke="#A28155" stroke-width="9" stroke-linecap="round" fill="none">
+    <path d="M654 706 L636 836"/>
+    <path d="M742 706 L760 836"/>
+    <path d="M686 782 L716 782"/>
+  </g>
+  <path d="M634 690 h130 v18 h-130 z" fill="#C9A97B" stroke="#94764F" stroke-width="2"/>
+
+  <rect width="800" height="900" filter="url(#nA)" opacity=".18" style="mix-blend-mode:multiply"/>
+</svg>

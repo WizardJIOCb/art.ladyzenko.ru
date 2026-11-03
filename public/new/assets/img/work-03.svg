@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-label="Ботанический скетч: полевые травы, линер">
+  <defs>
+    <filter id="paper3">
+      <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+    <radialGradient id="wash3" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#C9B070" stop-opacity=".3"/>
+      <stop offset="1" stop-color="#C9B070" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="wash3b" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#8FA383" stop-opacity=".26"/>
+      <stop offset="1" stop-color="#8FA383" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="800" height="1000" fill="#F4EDDD"/>
+  <ellipse cx="400" cy="430" rx="330" ry="360" fill="url(#wash3)"/>
+  <ellipse cx="470" cy="760" rx="240" ry="230" fill="url(#wash3b)"/>
+
+  <g stroke="#48543F" fill="none" stroke-linecap="round">
+    <!-- main stem -->
+    <path d="M392 940 C 386 800 386 660 376 520 C 368 404 356 316 344 246" stroke-width="3.2"/>
+    <!-- side stems -->
+    <path d="M384 700 C 350 664 316 640 272 620" stroke-width="2.4"/>
+    <path d="M380 606 C 420 570 466 552 512 540" stroke-width="2.2"/>
+    <path d="M372 470 C 336 442 304 428 264 418" stroke-width="2.2"/>
+    <path d="M366 366 C 400 340 438 330 476 322" stroke-width="2"/>
+    <!-- second plant -->
+    <path d="M540 940 C 536 812 544 692 536 596 C 530 520 516 466 504 414" stroke-width="2.6" opacity=".85"/>
+    <path d="M534 700 C 570 668 604 652 640 640" stroke-width="2" opacity=".8"/>
+    <path d="M530 560 C 496 532 470 518 440 508" stroke-width="1.8" opacity=".8"/>
+    <!-- third, thin -->
+    <path d="M240 940 C 244 856 250 800 246 742 C 242 690 232 656 222 620" stroke-width="1.8" opacity=".7"/>
+  </g>
+
+  <!-- leaves -->
+  <g fill="#5F7255" opacity=".55">
+    <g transform="translate(272 620) rotate(-16)"><path d="M0 0 C 22 -16 58 -18 86 -4 C 58 14 22 16 0 0 Z"/></g>
+    <g transform="translate(512 540) rotate(8)"><path d="M0 0 C 22 -14 56 -16 84 -3 C 56 13 22 15 0 0 Z"/></g>
+    <g transform="translate(264 418) rotate(-22)"><path d="M0 0 C 20 -14 50 -15 74 -3 C 50 12 20 14 0 0 Z"/></g>
+    <g transform="translate(476 322) rotate(12)"><path d="M0 0 C 18 -12 46 -13 68 -3 C 46 11 18 12 0 0 Z"/></g>
+    <g transform="translate(640 640) rotate(14)"><path d="M0 0 C 18 -12 46 -14 68 -3 C 46 11 18 13 0 0 Z"/></g>
+    <g transform="translate(440 508) rotate(-10)"><path d="M0 0 C 16 -11 42 -12 62 -3 C 42 10 16 12 0 0 Z"/></g>
+    <g transform="translate(300 800) rotate(-8)"><path d="M0 0 C 20 -14 52 -16 78 -4 C 52 12 20 14 0 0 Z"/></g>
+    <g transform="translate(470 820) rotate(10)"><path d="M0 0 C 18 -12 46 -14 68 -3 C 46 11 18 13 0 0 Z"/></g>
+  </g>
+
+  <!-- seed heads -->
+  <g stroke="#5A4A33" fill="none" stroke-width="1.6" opacity=".85">
+    <path d="M344 246 C 330 226 322 208 320 190"/>
+    <path d="M344 246 C 350 222 360 206 372 194"/>
+    <path d="M344 246 C 342 220 344 200 348 182"/>
+  </g>
+  <g fill="#7E6438" opacity=".7">
+    <ellipse cx="318" cy="186" rx="7" ry="12" transform="rotate(-14 318 186)"/>
+    <ellipse cx="374" cy="190" rx="7" ry="12" transform="rotate(16 374 190)"/>
+    <ellipse cx="348" cy="178" rx="6" ry="11"/>
+    <ellipse cx="330" cy="212" rx="5" ry="9" transform="rotate(-30 330 212)"/>
+    <ellipse cx="362" cy="210" rx="5" ry="9" transform="rotate(28 362 210)"/>
+  </g>
+
+  <!-- small blossoms -->
+  <g fill="none" stroke="#8A5B4A" stroke-width="1.4" opacity=".8">
+    <g transform="translate(504 414)">
+      <path d="M0 0 C -12 -10 -10 -22 0 -26 C 10 -22 12 -10 0 0 Z"/>
+      <path d="M0 0 C -14 -2 -22 -12 -20 -22"/>
+      <path d="M0 0 C 14 -2 22 -12 20 -22"/>
+    </g>
+    <g transform="translate(222 620)">
+      <path d="M0 0 C -10 -8 -8 -18 0 -22 C 8 -18 10 -8 0 0 Z"/>
+      <path d="M0 0 C -12 -2 -18 -10 -17 -18"/>
+    </g>
+  </g>
+
+  <!-- ground line -->
+  <path d="M60 942 C 240 928 560 930 740 944" stroke="#5B5040" stroke-width="2" opacity=".35" fill="none"/>
+  <rect width="800" height="1000" filter="url(#paper3)" opacity=".18" style="mix-blend-mode:multiply"/>
+</svg>

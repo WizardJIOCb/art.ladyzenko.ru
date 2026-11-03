@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-label="Акварель в синих тонах: сумерки над водой">
+  <defs>
+    <linearGradient id="sky7" x1="0" y1="0" x2=".2" y2="1">
+      <stop offset="0" stop-color="#1E2B44"/>
+      <stop offset=".42" stop-color="#33465F"/>
+      <stop offset=".72" stop-color="#6B7A86"/>
+      <stop offset="1" stop-color="#B79A85"/>
+    </linearGradient>
+    <linearGradient id="w7" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5A6A78"/>
+      <stop offset=".35" stop-color="#3B4C5E"/>
+      <stop offset="1" stop-color="#1B2733"/>
+    </linearGradient>
+    <radialGradient id="moon7" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#F6EEDB" stop-opacity=".55"/>
+      <stop offset=".42" stop-color="#E4DCC6" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#E4DCC6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="v7" cx=".5" cy=".4" r=".8">
+      <stop offset=".5" stop-color="#0E151C" stop-opacity="0"/>
+      <stop offset="1" stop-color="#0E151C" stop-opacity=".45"/>
+    </radialGradient>
+    <filter id="b7" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="12"/>
+    </filter>
+    <filter id="n7">
+      <feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="1000" fill="url(#sky7)"/>
+
+  <!-- moon -->
+  <circle cx="250" cy="240" r="150" fill="url(#moon7)"/>
+  <circle cx="250" cy="236" r="40" fill="#F7F0DC" opacity=".92"/>
+
+  <!-- clouds -->
+  <g fill="#2A3A4E" opacity=".6" filter="url(#b7)">
+    <ellipse cx="540" cy="200" rx="190" ry="16"/>
+    <ellipse cx="420" cy="300" rx="150" ry="12"/>
+    <ellipse cx="640" cy="360" rx="180" ry="10"/>
+  </g>
+
+  <!-- city skyline -->
+  <g fill="#1A2531">
+    <path d="M0 604 h60 v-46 h44 v46 h28 v-70 h50 v70 h34 v-38 h56 v38 h40 v-88 h44 v88 h52 v-52 h38 v52 h60 v-64 h40 v64 h56 v-30 h48 v30 h60 V650 H0 Z"/>
+  </g>
+  <g fill="#E8C98C" opacity=".55">
+    <rect x="76" y="574" width="8" height="8"/>
+    <rect x="120" y="562" width="7" height="7"/>
+    <rect x="252" y="588" width="7" height="7"/>
+    <rect x="300" y="548" width="8" height="8"/>
+    <rect x="352" y="574" width="7" height="7"/>
+    <rect x="470" y="562" width="7" height="7"/>
+    <rect x="560" y="576" width="8" height="8"/>
+    <rect x="626" y="590" width="7" height="7"/>
+  </g>
+
+  <!-- water -->
+  <rect y="648" width="800" height="352" fill="url(#w7)"/>
+  <path d="M0 648 H800" stroke="#93A3AC" stroke-width="3" opacity=".5"/>
+
+  <!-- moon reflection -->
+  <g fill="#EFE2C4">
+    <ellipse cx="250" cy="676" rx="42" ry="4" opacity=".42"/>
+    <ellipse cx="248" cy="704" rx="32" ry="3.2" opacity=".32"/>
+    <ellipse cx="252" cy="740" rx="24" ry="2.6" opacity=".24"/>
+    <ellipse cx="250" cy="784" rx="16" ry="2" opacity=".17"/>
+  </g>
+  <g stroke="#8FA2AE" stroke-linecap="round" fill="none" opacity=".3">
+    <path d="M60 700 h120" stroke-width="2.6"/>
+    <path d="M480 724 h130" stroke-width="2.4"/>
+    <path d="M120 800 h150" stroke-width="2.2"/>
+    <path d="M540 840 h140" stroke-width="2"/>
+    <path d="M40 900 h160" stroke-width="2" opacity=".7"/>
+    <path d="M420 940 h200" stroke-width="1.8" opacity=".6"/>
+  </g>
+
+  <!-- pier -->
+  <g fill="#141D26">
+    <path d="M560 800 h240 v16 H560 Z"/>
+    <rect x="600" y="816" width="14" height="120"/>
+    <rect x="700" y="816" width="14" height="120"/>
+    <rect x="770" y="816" width="14" height="120"/>
+  </g>
+  <path d="M560 800 h240" stroke="#5A6A78" stroke-width="2" opacity=".6"/>
+
+  <rect width="800" height="1000" fill="url(#v7)"/>
+  <rect width="800" height="1000" filter="url(#n7)" opacity=".18" style="mix-blend-mode:overlay"/>
+</svg>
