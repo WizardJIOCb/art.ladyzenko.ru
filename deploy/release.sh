@@ -50,11 +50,11 @@ if [[ ! -f /etc/letsencrypt/live/art.ladyzenko.ru/fullchain.pem ]]; then
     activate_config "$release/deploy/bootstrap-http.conf"
     challenge="art-deploy-$revision"
     printf '%s' "$revision" > "$base/acme/.well-known/acme-challenge/$challenge"
-    actual=$(curl --fail --silent --show-error --max-time 20 "http://art.ladyzenko.ru/.well-known/acme-challenge/$challenge")
+    actual=$(curl --fail --silent --show-error --retry 10 --retry-all-errors --retry-delay 1 --max-time 20 "http://art.ladyzenko.ru/.well-known/acme-challenge/$challenge")
     [[ "$actual" == "$revision" ]] || { echo 'Public ACME path failed'; exit 1; }
     certbot certonly --webroot -w "$base/acme" --cert-name art.ladyzenko.ru -d art.ladyzenko.ru --non-interactive --agree-tos
 fi
 activate_config "$release/deploy/nginx.conf"
-curl --fail --silent --show-error --max-time 20 https://art.ladyzenko.ru/ -o /dev/null
-curl --fail --silent --show-error --max-time 20 https://art.ladyzenko.ru/new/ -o /dev/null
+curl --fail --silent --show-error --retry 10 --retry-all-errors --retry-delay 1 --max-time 20 https://art.ladyzenko.ru/ -o /dev/null
+curl --fail --silent --show-error --retry 10 --retry-all-errors --retry-delay 1 --max-time 20 https://art.ladyzenko.ru/new/ -o /dev/null
 printf 'DEPLOYED %s\nBACKUP %s\n' "$revision" "$backup"
