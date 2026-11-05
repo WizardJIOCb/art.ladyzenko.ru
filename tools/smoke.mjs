@@ -53,7 +53,7 @@ try {
     return result.result.value;
   };
   await command('Page.enable'); await command('Runtime.enable'); await command('Network.enable');
-  for (const path of ['/', '/new/']) {
+  for (const path of ['/', '/new/', '/new2/']) {
     for (const width of [1440, 390]) {
       await command('Emulation.setDeviceMetricsOverride', { width, height: 900, deviceScaleFactor: 1, mobile: width === 390 });
       await command('Page.navigate', { url: base + path });
@@ -65,6 +65,27 @@ try {
       }
       assert(ready, `${path}: navigation did not complete`);
       await sleep(1000);
+      const name = path === '/' ? 'main' : path.slice(1, -1);
+      if (path === '/new2/') {
+        assert(await evaluate(`document.documentElement.dataset.swarmReady === 'true'`), 'Build engine initialized');
+        assert(await evaluate(`+document.documentElement.dataset.swarmTotal > 50`), 'Build targets present');
+        const buildShot = await command('Page.captureScreenshot', { format: 'png', fromSurface: true });
+        writeFileSync(`shots/${name}-building-${width}.png`, Buffer.from(buildShot.data, 'base64'));
+        await sleep(3200);
+        assert(await evaluate(`getComputedStyle(document.querySelector('h1')).opacity === '1' && [...document.querySelectorAll('h1 .swarm-letter')].every(el => getComputedStyle(el).opacity === '1')`), 'Heading finishes typing');
+        const before = await evaluate(`+document.documentElement.dataset.swarmCompleted`);
+        await evaluate(`document.documentElement.style.scrollBehavior = 'auto'; document.getElementById('directions').scrollIntoView({behavior: 'instant'})`);
+        await sleep(350);
+        assert(await evaluate(`+document.documentElement.dataset.swarmActive > 0`), 'Scrolling starts new builders');
+        await sleep(3000);
+        assert(await evaluate(`+document.documentElement.dataset.swarmCompleted > ${before}`), 'Scroll builds more content');
+        await evaluate(`document.getElementById('buildStop').click()`);
+        assert(await evaluate(`!document.querySelector('.swarm-pending') && document.documentElement.classList.contains('swarm-off')`), 'Stop reveals all');
+        await evaluate(`document.getElementById('buildReplay').click()`);
+        await sleep(350);
+        assert(await evaluate(`!!document.querySelector('.swarm-pending') && document.documentElement.classList.contains('swarm-on') && +document.documentElement.dataset.swarmActive > 0`), 'Replay restarts builders');
+        await evaluate(`document.getElementById('buildStop').click()`);
+      }
       const state = await evaluate(`({ title: document.title, heading: !!document.querySelector('h1'), overflow: document.documentElement.scrollWidth > innerWidth + 1, styles: [...document.styleSheets].length })`);
       assert(state.heading && state.styles && !state.overflow, JSON.stringify({ path, width, state }));
       if (width === 390) {
@@ -73,10 +94,10 @@ try {
         await evaluate(`document.getElementById('${toggle}').click()`);
       }
       const shot = await command('Page.captureScreenshot', { format: 'png', fromSurface: true });
-      writeFileSync(`shots/${path === '/' ? 'main' : 'new'}-${width}.png`, Buffer.from(shot.data, 'base64'));
+      writeFileSync(`shots/${name}-${width}.png`, Buffer.from(shot.data, 'base64'));
       await evaluate(`document.querySelector('${path === '/' ? '.gallery-item' : '.work'}').click()`);
       assert(await evaluate(`!document.getElementById('lightbox').hidden`));
-      if (path === '/new/') {
+      if (path !== '/') {
         await evaluate(`document.getElementById('lightboxImg').decode()`);
         assert(await evaluate(`document.getElementById('lightboxImg').naturalWidth > 0`));
       }
@@ -90,6 +111,17 @@ try {
       console.log(`PASS ${base}${path} ${width}px: layout, menu, gallery, resources`);
     }
   }
+  await command('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-reduced-motion', value: 'reduce' }] });
+  await command('Page.navigate', { url: base + '/new2/' });
+  await sleep(1400);
+  assert(await evaluate(`document.documentElement.classList.contains('swarm-off') && !document.querySelector('.swarm-pending') && getComputedStyle(document.querySelector('h1')).opacity === '1'`), 'Reduced motion displays finished page');
+  await command('Emulation.setEmulatedMedia', { features: [] });
+  await command('Emulation.setScriptExecutionDisabled', { value: true });
+  await command('Page.navigate', { url: base + '/new2/' });
+  await sleep(1200);
+  await command('Emulation.setScriptExecutionDisabled', { value: false });
+  assert(await evaluate(`!document.documentElement.classList.contains('swarm-boot') && getComputedStyle(document.querySelector('h1')).opacity === '1' && document.getElementById('buildControls').hidden`), 'No-JS fallback displays page');
+  console.log('PASS /new2/: scroll building, typing, stop, replay, reduced motion, no JavaScript');
   assert.deepEqual(errors, [], 'Browser errors');
   await send('Browser.close');
 } finally {

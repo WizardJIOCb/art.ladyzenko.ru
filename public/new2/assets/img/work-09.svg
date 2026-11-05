@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" role="img" aria-label="Абстрактная композиция: три линии горизонта">
+  <defs>
+    <linearGradient id="top9" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F1E7D2"/>
+      <stop offset="1" stop-color="#EFE0C2"/>
+    </linearGradient>
+    <linearGradient id="band9a" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#E0C79C"/>
+      <stop offset="1" stop-color="#D6B888"/>
+    </linearGradient>
+    <linearGradient id="band9b" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#C07253"/>
+      <stop offset="1" stop-color="#A85E43"/>
+    </linearGradient>
+    <linearGradient id="band9c" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#31514A"/>
+      <stop offset="1" stop-color="#223C37"/>
+    </linearGradient>
+    <filter id="n9">
+      <feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="4" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+    <filter id="b9" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="16"/>
+    </filter>
+  </defs>
+
+  <rect width="1000" height="700" fill="url(#top9)"/>
+
+  <!-- sun -->
+  <circle cx="702" cy="196" r="86" fill="#D9A03F" opacity=".85"/>
+  <circle cx="702" cy="196" r="86" fill="none" stroke="#F1E7D2" stroke-width="8" opacity=".35"/>
+
+  <!-- band a -->
+  <path d="M0 330 C 90 322 160 336 240 328 C 330 318 390 334 470 330 C 560 326 640 340 730 332 C 820 324 910 336 1000 328 L1000 448 C 910 452 820 444 730 450 C 640 456 560 444 470 450 C 380 456 310 446 240 452 C 150 460 80 450 0 456 Z" fill="url(#band9a)"/>
+  <g stroke="#B99A6E" stroke-width="1.4" opacity=".35">
+    <path d="M20 366 C 200 358 380 368 560 362 C 740 356 880 364 980 360"/>
+    <path d="M20 404 C 220 396 400 406 600 400 C 780 394 900 402 980 398"/>
+  </g>
+
+  <!-- band b -->
+  <path d="M0 470 C 100 462 180 476 270 468 C 370 458 430 474 520 470 C 620 466 700 478 800 470 C 890 462 950 474 1000 468 L1000 566 C 910 572 830 560 740 566 C 640 572 560 560 470 566 C 380 572 300 562 210 570 C 130 576 60 566 0 572 Z" fill="url(#band9b)"/>
+  <g stroke="#8E4A34" stroke-width="1.4" opacity=".3">
+    <path d="M20 502 C 220 494 420 504 620 498 C 800 492 920 500 980 496"/>
+    <path d="M20 538 C 240 530 460 540 680 534 C 840 530 940 536 980 534"/>
+  </g>
+
+  <!-- band c -->
+  <path d="M0 592 C 110 586 190 598 290 590 C 390 582 460 596 560 592 C 660 588 750 598 850 590 C 930 584 970 594 1000 590 L1000 700 L0 700 Z" fill="url(#band9c)"/>
+  <g stroke="#142823" stroke-width="1.6" opacity=".28">
+    <path d="M20 622 C 220 616 420 626 620 620 C 800 614 920 622 980 618"/>
+    <path d="M20 654 C 240 648 460 658 680 652 C 840 648 940 654 980 650"/>
+  </g>
+
+  <!-- accents -->
+  <g stroke="#2A2620" stroke-width="2.2" needleLine="none" fill="none" opacity=".55">
+    <path d="M96 214 C 210 206 320 216 420 210"/>
+    <path d="M96 214 c 0 -14 18 -22 34 -18"/>
+  </g>
+  <ellipse cx="140" cy="232" rx="34" ry="16" fill="#F1E7D2" opacity=".5"/>
+  <ellipse cx="500" cy="176" rx="180" ry="90" fill="#FFF3D6" opacity=".35" filter="url(#b9)"/>
+
+  <rect width="1000" height="700" filter="url(#n9)" opacity=".22" style="mix-blend-mode:multiply"/>
+</svg>

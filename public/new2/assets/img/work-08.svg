@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" role="img" aria-label="Этюд с яблоками на драпировке, гуашь">
+  <defs>
+    <linearGradient id="bg8" x1="0" y1="0" x2=".5" y2="1">
+      <stop offset="0" stop-color="#EDE4D0"/>
+      <stop offset=".6" stop-color="#DCD0B6"/>
+      <stop offset="1" stop-color="#C2B295"/>
+    </linearGradient>
+    <linearGradient id="drape8" x1="0" y1="0" x2=".4" y2="1">
+      <stop offset="0" stop-color="#95A5A5"/>
+      <stop offset=".55" stop-color="#7C8E90"/>
+      <stop offset="1" stop-color="#5E7074"/>
+    </linearGradient>
+    <radialGradient id="ap1" cx=".34" cy=".3" r=".78">
+      <stop offset="0" stop-color="#E4B24C"/>
+      <stop offset=".55" stop-color="#C9892E"/>
+      <stop offset="1" stop-color="#8B5A1C"/>
+    </radialGradient>
+    <radialGradient id="ap2" cx=".34" cy=".3" r=".78">
+      <stop offset="0" stop-color="#C24E36"/>
+      <stop offset=".55" stop-color="#9E3726"/>
+      <stop offset="1" stop-color="#6A2016"/>
+    </radialGradient>
+    <radialGradient id="ap3" cx=".34" cy=".3" r=".78">
+      <stop offset="0" stop-color="#A9B05A"/>
+      <stop offset=".55" stop-color="#86903D"/>
+      <stop offset="1" stop-color="#5A6128"/>
+    </radialGradient>
+    <filter id="b8" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="9"/>
+    </filter>
+    <filter id="n8">
+      <feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+  </defs>
+
+  <rect width="1000" height="700" fill="url(#bg8)"/>
+
+  <!-- table -->
+  <path d="M0 470 C 260 452 620 462 1000 446 L1000 700 L0 700 Z" fill="#B99A74"/>
+  <path d="M0 470 C 260 452 620 462 1000 446" stroke="#8C6E4C" stroke-width="4" opacity=".5" fill="none"/>
+
+  <!-- drape -->
+  <path d="M-20 420 C 120 392 250 448 340 470 C 420 490 470 470 540 480 C 610 490 650 520 700 548 L700 700 L-20 700 Z" fill="url(#drape8)"/>
+  <path d="M40 440 C 150 430 220 470 300 492 C 380 514 430 496 500 506" stroke="#B4C0BE" stroke-width="14" opacity=".28" fill="none" filter="url(#b8)"/>
+  <path d="M120 640 C 260 600 420 596 560 620" stroke="#4E6064" stroke-width="18" opacity=".22" fill="none" filter="url(#b8)"/>
+
+  <!-- shadows -->
+  <g fill="#4A3B2E" opacity=".32">
+    <ellipse cx="470" cy="516" rx="140" ry="20" filter="url(#b8)"/>
+    <ellipse cx="648" cy="500" rx="88" ry="14" filter="url(#b8)"/>
+    <ellipse cx="352" cy="500" rx="76" ry="12" filter="url(#b8)"/>
+  </g>
+
+  <!-- apple big -->
+  <g>
+    <path d="M452 404 c 44 0 74 34 74 78 0 46 -34 70 -74 70 -40 0 -74 -24 -74 -70 0 -44 30 -78 74 -78 Z" fill="url(#ap1)"/>
+    <path d="M452 404 c 0 -14 6 -22 16 -26" fill="none" stroke="#6E4A20" stroke-width="5" stroke-linecap="round"/>
+    <path d="M468 376 c 16 -10 34 -8 44 4 -16 8 -34 6 -44 -4 Z" fill="#7C8A45"/>
+    <ellipse cx="424" cy="446" rx="20" ry="26" fill="#F2D48E" opacity=".4" filter="url(#b8)"/>
+    <path d="M394 470 c 10 26 34 40 58 40" stroke="#F0CE8C" stroke-width="6" opacity=".22" fill="none"/>
+  </g>
+
+  <!-- apple right -->
+  <g>
+    <path d="M646 428 c 34 0 56 26 56 58 0 34 -26 52 -56 52 -30 0 -56 -18 -56 -52 0 -32 22 -58 56 -58 Z" fill="url(#ap2)"/>
+    <path d="M646 428 c 0 -11 5 -17 13 -20" fill="none" stroke="#5C2C1E" stroke-width="4.4" stroke-linecap="round"/>
+    <ellipse cx="628" cy="460" rx="14" ry="18" fill="#F0A48C" opacity=".35" filter="url(#b8)"/>
+  </g>
+
+  <!-- apple small -->
+  <g>
+    <path d="M336 448 c 26 0 44 20 44 46 0 26 -20 40 -44 40 -24 0 -44 -14 -44 -40 0 -26 18 -46 44 -46 Z" fill="url(#ap3)"/>
+    <ellipse cx="322" cy="474" rx="11" ry="14" fill="#DCE39A" opacity=".32" filter="url(#b8)"/>
+  </g>
+
+  <!-- light from left -->
+  <path d="M0 0 L240 0 L120 700 L0 700 Z" fill="#FFF0CD" opacity=".14"/>
+  <rect width="1000" height="700" filter="url(#n8)" opacity=".2" style="mix-blend-mode:multiply"/>
+</svg>

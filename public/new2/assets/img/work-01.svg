@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-label="Акварельный пейзаж: закат над рекой">
+  <defs>
+    <linearGradient id="s1" x1="0" y1="0" x2=".2" y2="1">
+      <stop offset="0" stop-color="#F2DDBB"/>
+      <stop offset=".3" stop-color="#F0C795"/>
+      <stop offset=".58" stop-color="#E3A17D"/>
+      <stop offset="1" stop-color="#B0736A"/>
+    </linearGradient>
+    <linearGradient id="w1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#DCA781"/>
+      <stop offset=".22" stop-color="#BB8672"/>
+      <stop offset="1" stop-color="#6C5050"/>
+    </linearGradient>
+    <radialGradient id="g1" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#FFF6DE" stop-opacity=".95"/>
+      <stop offset=".5" stop-color="#FCDCA6" stop-opacity=".4"/>
+      <stop offset="1" stop-color="#FCDCA6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="v1" cx=".5" cy=".4" r=".8">
+      <stop offset=".55" stop-color="#3A2A24" stop-opacity="0"/>
+      <stop offset="1" stop-color="#3A2A24" stop-opacity=".26"/>
+    </radialGradient>
+    <filter id="b1" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="14"/>
+    </filter>
+    <filter id="n1">
+      <feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="1000" fill="url(#s1)"/>
+  <circle cx="300" cy="556" r="240" fill="url(#g1)"/>
+  <circle cx="300" cy="548" r="62" fill="#FFF4D8" opacity=".92"/>
+
+  <ellipse cx="560" cy="250" rx="170" ry="18" fill="#FBE8CB" opacity=".45" filter="url(#b1)"/>
+  <ellipse cx="210" cy="330" rx="150" ry="14" fill="#F7DCB9" opacity=".4" filter="url(#b1)"/>
+  <ellipse cx="640" cy="410" rx="120" ry="12" fill="#F3D2AF" opacity=".3" filter="url(#b1)"/>
+
+  <!-- hills -->
+  <path d="M0 596 C 110 560 190 584 280 566 C 380 546 460 576 560 566 C 660 556 720 580 800 566 L800 608 L0 608 Z" fill="#9C6B63" opacity=".55"/>
+  <path d="M0 610 C 130 590 210 612 320 600 C 440 588 560 614 800 598 L800 622 L0 622 Z" fill="#6F4F4B"/>
+
+  <rect y="620" width="800" height="380" fill="url(#w1)"/>
+  <g fill="#FFE7BE">
+    <ellipse cx="300" cy="648" rx="60" ry="5" opacity=".8"/>
+    <ellipse cx="304" cy="676" rx="46" ry="4" opacity=".62"/>
+    <ellipse cx="296" cy="708" rx="34" ry="3.4" opacity=".5"/>
+    <ellipse cx="302" cy="748" rx="24" ry="2.8" opacity=".36"/>
+    <ellipse cx="298" cy="796" rx="16" ry="2.2" opacity=".26"/>
+  </g>
+  <g stroke="#E0B694" stroke-linecap="round" opacity=".32" fill="none">
+    <path d="M60 700 h110" stroke-width="3"/>
+    <path d="M520 716 h140" stroke-width="3"/>
+    <path d="M120 780 h90" stroke-width="2.4"/>
+    <path d="M600 800 h120" stroke-width="2.4"/>
+    <path d="M50 880 h150" stroke-width="2.2" opacity=".7"/>
+    <path d="M460 920 h180" stroke-width="2" opacity=".6"/>
+  </g>
+
+  <!-- foreground bank -->
+  <path d="M0 1000 L0 902 C 90 888 160 916 250 934 C 330 950 420 942 520 962 C 620 982 710 972 800 986 L800 1000 Z" fill="#43332F" opacity=".92"/>
+  <g stroke="#2F231F" stroke-linecap="round" fill="none">
+    <path d="M96 918 C 104 872 96 840 84 812" stroke-width="3"/>
+    <path d="M130 926 C 138 886 136 858 128 830" stroke-width="2.4"/>
+  </g>
+
+  <rect width="800" height="1000" fill="url(#v1)"/>
+  <rect width="800" height="1000" filter="url(#n1)" opacity=".15" style="mix-blend-mode:multiply"/>
+</svg>

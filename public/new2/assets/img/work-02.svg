@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 900" role="img" aria-label="Натюрморт: гранат, кувшин и драпировка">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2=".6" y2="1">
+      <stop offset="0" stop-color="#5A4A44"/>
+      <stop offset=".55" stop-color="#40332F"/>
+      <stop offset="1" stop-color="#2A201D"/>
+    </linearGradient>
+    <linearGradient id="jug" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#D8CCB8"/>
+      <stop offset=".5" stop-color="#B9A98F"/>
+      <stop offset="1" stop-color="#7E705E"/>
+    </linearGradient>
+    <radialGradient id="pom" cx=".36" cy=".32" r=".75">
+      <stop offset="0" stop-color="#C8503A"/>
+      <stop offset=".55" stop-color="#9C3024"/>
+      <stop offset="1" stop-color="#611B15"/>
+    </radialGradient>
+    <radialGradient id="light2" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#F0D6AE" stop-opacity=".42"/>
+      <stop offset="1" stop-color="#F0D6AE" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="v2" cx=".5" cy=".45" r=".78">
+      <stop offset=".45" stop-color="#120C0A" stop-opacity="0"/>
+      <stop offset="1" stop-color="#120C0A" stop-opacity=".55"/>
+    </radialGradient>
+    <filter id="n2">
+      <feTurbulence type="fractalNoise" baseFrequency=".75" numOctaves="4" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+    <filter id="b2" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="16"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="900" fill="url(#bg2)"/>
+  <circle cx="300" cy="330" r="330" fill="url(#light2)"/>
+
+  <!-- table plane -->
+  <path d="M0 640 C 200 620 480 636 800 616 L800 900 L0 900 Z" fill="#4A3B34"/>
+  <path d="M0 640 C 200 620 480 636 800 616" stroke="#7C6252" stroke-width="3" opacity=".45" fill="none"/>
+
+  <!-- drape -->
+  <path d="M0 620 C 120 600 210 646 300 660 C 380 672 430 650 500 660 C 560 668 580 700 620 720 L640 900 L0 900 Z" fill="#6E6A63" opacity=".75"/>
+  <path d="M40 640 C 120 632 180 664 250 678 C 320 692 360 672 420 682" stroke="#8E897F" stroke-width="10" opacity=".35" fill="none" filter="url(#b2)"/>
+
+  <!-- jug -->
+  <g>
+    <ellipse cx="560" cy="642" rx="92" ry="16" fill="#1D1512" opacity=".55"/>
+    <path d="M500 640 C 486 560 492 500 512 452 C 522 428 530 414 528 396 L592 396 C 590 414 598 428 608 452 C 628 500 634 560 620 640 Z" fill="url(#jug)"/>
+    <path d="M528 396 L592 396" stroke="#6F6353" stroke-width="4"/>
+    <ellipse cx="560" cy="396" rx="32" ry="8" fill="#8E806C"/>
+    <path d="M620 468 C 662 476 672 546 640 574 C 628 584 618 578 616 566 C 636 546 632 500 612 492 Z" fill="#A99A81"/>
+    <path d="M512 470 C 528 486 530 560 520 606" stroke="#F1E6CE" stroke-width="9" opacity=".22" fill="none"/>
+  </g>
+
+  <!-- pomegranate -->
+  <g>
+    <ellipse cx="318" cy="694" rx="66" ry="12" fill="#191110" opacity=".6"/>
+    <path d="M318 566 c 46 0 74 34 74 74 0 40 -32 62 -74 62 -42 0 -74 -22 -74 -62 0 -40 28 -74 74 -74 Z" fill="url(#pom)"/>
+    <path d="M318 566 c 10 0 18 4 24 10 -8 10 -20 16 -34 16 -10 0 -18 -4 -24 -10 8 -10 20 -16 34 -16 Z" fill="#8E2A20"/>
+    <path d="M310 560 l 6 -26 8 22 10 -16 -2 22" fill="none" stroke="#7A2A1C" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    <ellipse cx="292" cy="618" rx="16" ry="24" fill="#E07A5F" opacity=".38" filter="url(#b2)"/>
+    <path d="M256 640 c 14 26 40 38 62 36" stroke="#F0B29B" stroke-width="6" opacity=".22" fill="none"/>
+  </g>
+
+  <!-- small fruit -->
+  <g>
+    <ellipse cx="410" cy="700" rx="30" ry="8" fill="#191110" opacity=".5"/>
+    <circle cx="410" cy="674" r="28" fill="#B98536"/>
+    <circle cx="402" cy="664" r="9" fill="#E8C27A" opacity=".5"/>
+  </g>
+
+  <rect width="800" height="900" fill="url(#v2)"/>
+  <rect width="800" height="900" filter="url(#n2)" opacity=".22" style="mix-blend-mode:overlay"/>
+</svg>

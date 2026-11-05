@@ -24,6 +24,7 @@ else
 fi
 test -f "$release/public/index.html"
 test -f "$release/public/new/index.html"
+test -f "$release/public/new2/index.html"
 chmod -R u=rwX,go=rX "$release"
 ln -s "$release/public" "$base/current.$stamp"
 mv -Tf "$base/current.$stamp" "$base/current"
@@ -57,4 +58,5 @@ fi
 activate_config "$release/deploy/nginx.conf"
 curl --fail --silent --show-error --retry 10 --retry-all-errors --retry-delay 1 --max-time 20 https://art.ladyzenko.ru/ -o /dev/null
 curl --fail --silent --show-error --retry 10 --retry-all-errors --retry-delay 1 --max-time 20 https://art.ladyzenko.ru/new/ -o /dev/null
+curl --fail --silent --show-error --retry 10 --retry-all-errors --retry-delay 1 --max-time 20 https://art.ladyzenko.ru/new2/ -o /dev/null
 printf 'DEPLOYED %s\nBACKUP %s\n' "$revision" "$backup"

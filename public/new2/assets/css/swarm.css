@@ -1,0 +1,83 @@
+/* Original DOM-based interpretation of the collaborative-cursor build effect. */
+.build-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  pointer-events: none;
+}
+.build-controls {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 130;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  color: var(--ink);
+  background: rgba(251, 248, 242, .96);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow-soft);
+  font: 400 12px/1.4 var(--sans);
+}
+.build-controls[hidden] { display: none; }
+.build-indicator {
+  flex: 0 0 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--terracotta);
+}
+.build-controls.is-resting .build-indicator { background: var(--teal); }
+.build-caption { display: grid; gap: 2px; min-width: 164px; }
+.build-caption b { font-weight: 600; }
+.build-caption > span { color: var(--ink-muted); font-size: 10px; }
+.build-controls button {
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  white-space: nowrap;
+  transition: color .3s cubic-bezier(.22, 1, .36, 1), background .3s cubic-bezier(.22, 1, .36, 1);
+}
+.build-controls button:hover { background: var(--paper-3); }
+.build-controls button:active { transform: translateY(1px); }
+.build-controls button:disabled { opacity: .45; cursor: default; }
+/* Stock reveals are replaced only on this copy. Content stays visible without JS. */
+.reveal { opacity: 1; transform: none; transition: none; }
+.swarm-boot main .reveal { opacity: 0; }
+.swarm-on .swarm-piece.swarm-pending { opacity: 0 !important; pointer-events: none; }
+.swarm-on .swarm-piece.swarm-working { will-change: opacity, translate, clip-path; }
+.swarm-on .swarm-piece.swarm-typing { opacity: 1; }
+.swarm-on .swarm-letter { opacity: 0; }
+.swarm-on .swarm-complete .swarm-letter { opacity: 1; }
+.swarm-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.swarm-off .swarm-piece { opacity: 1 !important; translate: none !important; clip-path: none !important; }
+.swarm-off .swarm-letter { opacity: 1 !important; }
+.swarm-off .build-overlay { display: none; }
+@media (max-width: 600px) {
+  .build-controls { right: 12px; left: 12px; bottom: 12px; gap: 8px; padding: 8px 12px; }
+  .build-caption { min-width: 0; flex: 1; }
+  .build-caption b { font-size: 11px; }
+  .build-caption > span { font-size: 9px; }
+  .build-controls button { font-size: 11px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .swarm-boot main .reveal, .swarm-on .swarm-piece.swarm-pending, .swarm-on .swarm-letter { opacity: 1 !important; }
+  .swarm-on .swarm-piece { translate: none !important; clip-path: none !important; }
+  .build-overlay, .build-controls { display: none; }
+}
+@media print {
+  .build-overlay, .build-controls { display: none; }
+  .swarm-on .swarm-piece, .swarm-on .swarm-piece.swarm-pending, .swarm-on .swarm-letter { opacity: 1 !important; translate: none !important; clip-path: none !important; }
+}
