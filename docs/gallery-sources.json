@@ -1,0 +1,86 @@
+{
+  "channel": "https://t.me/anytin_sadik",
+  "note": "Описательные подписи по содержимому фотографий; техника указана только там, где она названа автором публикации.",
+  "works": [
+    {
+      "file": "/media/works/pumpkin-still-life.webp",
+      "title": "Осенний натюрморт",
+      "description": "Гуашь",
+      "author": "Анна Калимуллина",
+      "source": "https://t.me/anytin_sadik/45",
+      "photo": "https://t.me/anytin_sadik/45?single",
+      "width": 600,
+      "height": 800
+    },
+    {
+      "file": "/media/works/pansy-color.webp",
+      "title": "Анютины глазки",
+      "description": "Цветочный этюд",
+      "author": "Анна Калимуллина",
+      "source": "https://t.me/anytin_sadik/230",
+      "photo": "https://t.me/anytin_sadik/230?single",
+      "width": 600,
+      "height": 800
+    },
+    {
+      "file": "/media/works/garlic-watercolor.webp",
+      "title": "Чеснок",
+      "description": "Акварель",
+      "author": "Анна Калимуллина",
+      "source": "https://t.me/anytin_sadik/7",
+      "photo": "https://t.me/anytin_sadik/7",
+      "width": 800,
+      "height": 600
+    },
+    {
+      "file": "/media/works/pink-lilies.webp",
+      "title": "Розовые лилии",
+      "description": "Цветочный этюд",
+      "author": "Анна Калимуллина",
+      "source": "https://t.me/anytin_sadik/561",
+      "photo": "https://t.me/anytin_sadik/565?single",
+      "width": 600,
+      "height": 800
+    },
+    {
+      "file": "/media/works/winter-village.webp",
+      "title": "Зимняя деревня",
+      "description": "Пейзаж",
+      "author": "Анна Калимуллина",
+      "source": "https://t.me/anytin_sadik/239",
+      "photo": "https://t.me/anytin_sadik/240?single",
+      "width": 600,
+      "height": 800
+    },
+    {
+      "file": "/media/works/rudbeckia.webp",
+      "title": "Рудбекия",
+      "description": "Цветочный этюд",
+      "author": "Анна Калимуллина",
+      "source": "https://t.me/anytin_sadik/58",
+      "photo": "https://t.me/anytin_sadik/61?single",
+      "width": 600,
+      "height": 800
+    },
+    {
+      "file": "/media/works/pansy-pencil.webp",
+      "title": "Анютины глазки: набросок",
+      "description": "Рисунок",
+      "author": "Анна Калимуллина",
+      "source": "https://t.me/anytin_sadik/230",
+      "photo": "https://t.me/anytin_sadik/231?single",
+      "width": 600,
+      "height": 800
+    },
+    {
+      "file": "/media/works/pumpkin-watercolor.webp",
+      "title": "Натюрморт с тыквой",
+      "description": "Акварель",
+      "author": "Анна Калимуллина",
+      "source": "https://t.me/anytin_sadik/45",
+      "photo": "https://t.me/anytin_sadik/47?single",
+      "width": 800,
+      "height": 600
+    }
+  ]
+}

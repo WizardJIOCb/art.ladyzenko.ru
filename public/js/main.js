@@ -131,22 +131,7 @@
     if (e.key === "Escape" && !lightbox.hidden) closeLightbox();
   });
 
-  /* ---- Форма записи ---- */
-  const form = document.getElementById("contact-form");
-  const success = document.getElementById("form-success");
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const name = form.elements.name.value.trim();
-    const contact = form.elements.contact.value.trim();
-    let valid = true;
-    [form.elements.name, form.elements.contact].forEach((f) => (f.style.borderColor = ""));
-    if (!name) { form.elements.name.style.borderColor = "#d8431c"; valid = false; }
-    if (!contact) { form.elements.contact.style.borderColor = "#d8431c"; valid = false; }
-    if (!valid) return;
-    success.hidden = false;
-    form.reset();
-    setTimeout(() => { success.hidden = true; }, 6000);
-  });
+  /* Форму обрабатывает /shared/leads.js. */
 
   /* ---- Год ---- */
   const year = document.getElementById("year");

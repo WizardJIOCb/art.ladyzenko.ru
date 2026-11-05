@@ -1,0 +1,10 @@
+.work--photo img { object-fit: contain; padding: 12px; background: var(--paper-3); }
+.frame .art.gallery-photo { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: contain; background: #eee9df; }
+.lightbox-body .art.gallery-photo { width: auto; height: auto; aspect-ratio: auto; object-fit: contain; }
+.gallery-credit { margin-top: 24px; text-align: center; font-size: 14px; color: var(--cream, var(--ink-soft)); }
+.gallery-credit a { text-decoration: underline; text-underline-offset: 4px; }
+.portrait-photo { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.lead-trap { display: none !important; }
+.lead-error { grid-column: 1 / -1; padding: 12px; border: 1px solid #d19784; border-radius: 4px; color: #8a2d18; background: #fff4ed; font-size: 14px; }
+.lead-error[hidden] { display: none; }
+[aria-invalid="true"] { outline: 2px solid #b5482b; outline-offset: 2px; }

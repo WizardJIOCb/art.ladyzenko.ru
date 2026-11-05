@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "scripts": {
     "check": "node tools/check.mjs",
-    "smoke": "node tools/smoke.mjs"
+    "smoke": "node tools/smoke.mjs",
+    "test:server": "py -3 -m unittest discover -s server -p test_*.py"
   }
 }

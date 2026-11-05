@@ -158,8 +158,6 @@
 
   /* ---------- 7. Booking form ---------- */
   var form = document.getElementById('bookingForm');
-  var success = document.getElementById('formSuccess');
-  var submitBtn = document.getElementById('submitBtn');
 
   function digits(value) { return (value || '').replace(/\D/g, ''); }
 
@@ -190,34 +188,6 @@
         phoneField.value = out;
       });
     }
-
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      var nameOk = nameField && nameField.value.trim().length >= 2;
-      var phoneOk = phoneField && digits(phoneField.value).length >= 11;
-
-      setInvalid(nameField && nameField.closest('.field'), !nameOk);
-      setInvalid(phoneField && phoneField.closest('.field'), !phoneOk);
-
-      if (!nameOk) { if (nameField) nameField.focus(); return; }
-      if (!phoneOk) { if (phoneField) phoneField.focus(); return; }
-
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Отправляем…';
-      }
-
-      /* No backend: swap to the success state. */
-      setTimeout(function () {
-        form.classList.add('is-sent');
-        if (success) success.hidden = false;
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.textContent = 'Записаться на пробное';
-        }
-      }, 550);
-    });
 
     [nameField, phoneField].forEach(function (input) {
       if (!input) return;

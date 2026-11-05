@@ -1,0 +1,23 @@
+[Unit]
+Description=Art Ladyzenko lead forms Telegram outbox
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+DynamicUser=yes
+StateDirectory=art-ladyzenko-leads
+StateDirectoryMode=0700
+LoadCredential=art-leads.json:/etc/art-ladyzenko-leads.json
+ExecStart=/usr/bin/python3 /var/www/art.ladyzenko.ru/app-current/server/leads.py
+Restart=on-failure
+RestartSec=3
+UMask=0077
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+
+[Install]
+WantedBy=multi-user.target

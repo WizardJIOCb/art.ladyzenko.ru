@@ -26,6 +26,9 @@ try {
   let id = 0;
   const pending = new Map();
   const errors = [];
+  let leadMock = "error";
+  const formRequests = [];
+  let fulfillLead;
   ws.addEventListener('message', event => {
     const message = JSON.parse(event.data);
     if (message.id) {
@@ -33,7 +36,8 @@ try {
       if (!p) return;
       pending.delete(message.id); clearTimeout(p.timer);
       message.error ? p.reject(new Error(JSON.stringify(message.error))) : p.resolve(message.result);
-    } else if (message.method === 'Runtime.exceptionThrown') errors.push(message.params.exceptionDetails);
+    } else if (message.method === 'Fetch.requestPaused' && fulfillLead) { fulfillLead(message.params).catch(error => errors.push({ mock: error.message })); }
+    else if (message.method === 'Runtime.exceptionThrown') errors.push(message.params.exceptionDetails);
     else if (message.method === 'Network.responseReceived' && message.params.response.status >= 400)
       errors.push({ status: message.params.response.status, url: message.params.response.url });
   });
@@ -53,6 +57,14 @@ try {
     return result.result.value;
   };
   await command('Page.enable'); await command('Runtime.enable'); await command('Network.enable');
+  fulfillLead = async params => {
+    const data = JSON.parse(params.request.postData);
+    formRequests.push(data);
+    const result = leadMock === 'success' ? { ok: true, id: data.request_id } : { ok: false, error: 'Проверка обработки ошибки' };
+    await command('Fetch.fulfillRequest', { requestId: params.requestId, responseCode: 200,
+      responseHeaders: [{ name: 'Content-Type', value: 'application/json' }], body: Buffer.from(JSON.stringify(result)).toString('base64') });
+  };
+  await command('Fetch.enable', { patterns: [{ urlPattern: '*/api/leads', requestStage: 'Request' }] });
   for (const path of ['/', '/new/', '/new2/']) {
     for (const width of [1440, 390]) {
       await command('Emulation.setDeviceMetricsOverride', { width, height: 900, deviceScaleFactor: 1, mobile: width === 390 });
@@ -66,6 +78,7 @@ try {
       assert(ready, `${path}: navigation did not complete`);
       await sleep(1000);
       const name = path === '/' ? 'main' : path.slice(1, -1);
+      const isClassic = await evaluate(`!!document.getElementById('contact-form')`);
       if (path === '/new2/') {
         assert(await evaluate(`document.documentElement.dataset.swarmReady === 'true'`), 'Build engine initialized');
         assert(await evaluate(`+document.documentElement.dataset.swarmTotal > 50`), 'Build targets present');
@@ -89,25 +102,59 @@ try {
       const state = await evaluate(`({ title: document.title, heading: !!document.querySelector('h1'), overflow: document.documentElement.scrollWidth > innerWidth + 1, styles: [...document.styleSheets].length })`);
       assert(state.heading && state.styles && !state.overflow, JSON.stringify({ path, width, state }));
       if (width === 390) {
-        const toggle = path === '/' ? 'nav-toggle' : 'burger';
+        const toggle = isClassic ? 'nav-toggle' : 'burger';
         assert(await evaluate(`document.getElementById('${toggle}').click(); document.getElementById('${toggle}').getAttribute('aria-expanded') === 'true'`));
         await evaluate(`document.getElementById('${toggle}').click()`);
       }
       const shot = await command('Page.captureScreenshot', { format: 'png', fromSurface: true });
       writeFileSync(`shots/${name}-${width}.png`, Buffer.from(shot.data, 'base64'));
-      await evaluate(`document.querySelector('${path === '/' ? '.gallery-item' : '.work'}').click()`);
+      await evaluate(`document.querySelector('${isClassic ? '.gallery-item' : '.work'}').click()`);
       assert(await evaluate(`!document.getElementById('lightbox').hidden`));
-      if (path !== '/') {
+      if (!isClassic) {
         await evaluate(`document.getElementById('lightboxImg').decode()`);
         assert(await evaluate(`document.getElementById('lightboxImg').naturalWidth > 0`));
       }
-      await evaluate(`document.getElementById('${path === '/' ? 'lightbox-close' : 'lightboxClose'}').click()`);
+      await evaluate(`document.getElementById('${isClassic ? 'lightbox-close' : 'lightboxClose'}').click()`);
       assert(await evaluate(`document.getElementById('lightbox').hidden`));
-      if (path === '/') {
+      if (isClassic) {
         await evaluate(`document.querySelectorAll('#dots button')[1].click()`);
         assert(await evaluate(`document.querySelectorAll('#dots button')[1].classList.contains('is-active')`));
       }
       assert.deepEqual(await evaluate(`Array.from(document.querySelectorAll('img[src]')).filter(i => i.complete && !i.naturalWidth).map(i => i.src)`), []);
+      for (const section of ['about', 'gallery']) {
+        await evaluate(`document.documentElement.style.scrollBehavior = 'auto'; document.getElementById('${section}').scrollIntoView({behavior:'instant',block:'start'})`);
+        await sleep(1100);
+        assert(await evaluate(`document.documentElement.scrollWidth <= innerWidth + 1`), `${section} fits viewport`);
+        const sectionShot = await command('Page.captureScreenshot', { format: 'png', fromSurface: true });
+        writeFileSync(`shots/${section}-${name}-${width}.png`, Buffer.from(sectionShot.data, 'base64'));
+      }
+      assert(await evaluate(`document.querySelector('#about img[src="/media/anna-kalimullina.webp"]').naturalWidth > 0`), 'Real portrait loads');
+      assert(await evaluate(`document.querySelectorAll('#gallery img[src^="/media/works/"]').length >= 6`), 'Real works present');
+      leadMock = 'error';
+      const requestCount = formRequests.length;
+      await evaluate(`(() => {
+        const form = document.querySelector('#bookingForm, #contact-form');
+        form.scrollIntoView({behavior:'instant',block:'center'});
+        form.querySelector('[type="submit"]').click();
+      })()`);
+      assert(await evaluate(`!document.querySelector('.lead-error').hidden`), 'Empty form validation');
+      await evaluate(`(() => {
+        const form = document.querySelector('#bookingForm, #contact-form');
+        form.elements.name.value = 'Проверка интерфейса';
+        const contact = form.elements.phone || form.elements.contact;
+        contact.value = form.elements.phone ? '+7 000 000-00-00' : 'integration-test@example.invalid';
+        contact.dispatchEvent(new Event('input', {bubbles:true}));
+        form.querySelector('[type="submit"]').click();
+      })()`);
+      await sleep(250);
+      assert(await evaluate(`!document.querySelector('.lead-error').hidden && document.querySelector('.lead-error').textContent.includes('Проверка обработки ошибки') && document.querySelector('[name="name"]').value === 'Проверка интерфейса'`), 'Server error preserves input');
+      leadMock = 'success';
+      await evaluate(`document.querySelector('form [type="submit"]').click()`);
+      await sleep(250);
+      assert(await evaluate(`!document.querySelector('.form-success').hidden && document.querySelector('[name="name"]').value === ''`), 'Successful API receipt shows success');
+      assert.equal(formRequests.length, requestCount + 2, 'Both attempts use the API');
+      assert.equal(formRequests.at(-1).request_id, formRequests.at(-2).request_id, 'Retry uses the same idempotency ID');
+      assert.equal(formRequests.at(-1).source, path, 'Correct page source after route swap');
       console.log(`PASS ${base}${path} ${width}px: layout, menu, gallery, resources`);
     }
   }
