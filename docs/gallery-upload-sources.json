@@ -1,0 +1,160 @@
+{
+  "source": "Файлы предоставлены владельцем сайта 5 ноября 2026 года",
+  "note": "Подписи описывают содержимое; имена участников и авторство отдельных ученических работ не устанавливались.",
+  "media": [
+    {
+      "type": "photo",
+      "file": "/media/gallery/anna-with-lilies.webp",
+      "source_file": "1164e697-9343-4f38-b17c-0ef2d85d5bfb.jpg",
+      "source_sha256": "50da2252454b59934203e5f4f9186e84840992e1f321b4f1663adafc1799d611",
+      "title": "Анна с рисунком лилий",
+      "description": "В мастерской",
+      "width": 1080,
+      "height": 1440
+    },
+    {
+      "type": "photo",
+      "file": "/media/gallery/mallow-studies.webp",
+      "source_file": "24dc80b7-0e69-43d6-abd8-1c521462794a.jpg",
+      "source_sha256": "f0e08dc41258ab18abe57014a7143019cf7fe1c7d824773652fa23fb87edc360",
+      "title": "Цветочные этюды",
+      "description": "Наблюдаем и рисуем",
+      "width": 1080,
+      "height": 1440
+    },
+    {
+      "type": "photo",
+      "file": "/media/gallery/studio-watercolor.webp",
+      "source_file": "2668a440-8513-42f5-9dca-1f605dae9bfe.jpg",
+      "source_sha256": "07b4da1dd7aab76ddb34b8293ad29d30379d175a7044e8d1a614b779f6d46f4e",
+      "title": "За работой в мастерской",
+      "description": "Цветочный рисунок",
+      "width": 1080,
+      "height": 1440
+    },
+    {
+      "type": "photo",
+      "file": "/media/gallery/outdoor-drawing.webp",
+      "source_file": "32fce42b-41e7-4637-922b-5d7c60c3b7c1.jpg",
+      "source_sha256": "3f96a87949dfd25332898394c4bf13896426876675d837441f4540367124e50c",
+      "title": "Рисование на свежем воздухе",
+      "description": "Занятие с натуры",
+      "width": 1080,
+      "height": 1440
+    },
+    {
+      "type": "photo",
+      "file": "/media/gallery/pencil-characters.webp",
+      "source_file": "686c6cb1-5ebe-4602-abd7-66deda1d84c9.jpg",
+      "source_sha256": "7b749b365c15ddce2efa130e5f9a880fb5460b38f663cc12436bfbe18abfa294",
+      "title": "Персонажи в карандаше",
+      "description": "Рисунок",
+      "width": 1080,
+      "height": 1440
+    },
+    {
+      "type": "photo",
+      "file": "/media/gallery/park-sketches.webp",
+      "source_file": "86ef83d2-31da-4e42-8d34-b1d998df11af.jpg",
+      "source_sha256": "c3ae0e5fbf1c2501a46e6ca15f91a89e7deb168b2cc6a30e60b1d1a046158017",
+      "title": "Зарисовки в парке",
+      "description": "Архитектура и зелень",
+      "width": 1080,
+      "height": 1440
+    },
+    {
+      "type": "photo",
+      "file": "/media/gallery/sunflower-still-life.webp",
+      "source_file": "ad7d1e4e-d526-4d5b-a9dd-c1c29f0a0351.jpg",
+      "source_sha256": "0ee43ea6c721fc524f6ab4e94a3d861639ffa9de3528cae463b1894c5357d2aa",
+      "title": "Натюрморт с подсолнухами",
+      "description": "Цветы, фрукты и тыква",
+      "width": 1440,
+      "height": 1080
+    },
+    {
+      "type": "photo",
+      "file": "/media/gallery/yellow-bouquet.webp",
+      "source_file": "828db242-dc82-4104-9fca-3e03da6b4691.jpg",
+      "source_sha256": "a618c3a12269a51a410b29848e41828001579ae4289fb0ea9071c374b40d20fe",
+      "title": "Жёлтый букет",
+      "description": "Цветочный рисунок маркерами",
+      "width": 1080,
+      "height": 1440
+    },
+    {
+      "type": "photo",
+      "file": "/media/gallery/park-lesson.webp",
+      "source_file": "c099bb6b-a8c6-4791-87f4-db82e84c44a6.jpg",
+      "source_sha256": "f748fb4e26b66e16a8123d5d351b40fe6efaa87f556d5fe0c83a446e816b5714",
+      "title": "Занятие в парке",
+      "description": "Рисуем вместе",
+      "width": 1080,
+      "height": 1440
+    },
+    {
+      "type": "photo",
+      "file": "/media/gallery/drawings-together.webp",
+      "source_file": "d234dcac-87cf-4235-87f4-1841f110fbb0.jpg",
+      "source_sha256": "70fb8b4fc40758493df7c6963323b51df3a3b6bf8462ab5d20dd838342ba3b9e",
+      "title": "Рисунки после занятия",
+      "description": "Фотография с работами",
+      "width": 1080,
+      "height": 1440
+    },
+    {
+      "type": "photo",
+      "file": "/media/gallery/peony-drawing.webp",
+      "source_file": "27f94930-5911-4d17-8d82-e0a13f040385.jpg",
+      "source_sha256": "9750edda9a5e3009813e08bbd3537c1417559121fb8ea0b9b90a8c92aa87c5df",
+      "title": "Рисунок с пионами",
+      "description": "Фотография с готовой работой",
+      "width": 1080,
+      "height": 1440
+    },
+    {
+      "type": "photo",
+      "file": "/media/gallery/daylily-drawing.webp",
+      "source_file": "2774d604-0ad2-43df-8fbf-adfa3e12541f.jpg",
+      "source_sha256": "380a6941693ba08e27f44c17f36e662bff90ed8f571af345eee66a9f71a48521",
+      "title": "Цветы с натуры",
+      "description": "Рисунок и цветочная постановка в мастерской",
+      "width": 1080,
+      "height": 1440
+    },
+    {
+      "type": "photo",
+      "file": "/media/gallery/drawing-in-the-garden.webp",
+      "source_file": "1723fa1b-3ba4-4986-afe5-ba3b10a97d33.jpg",
+      "source_sha256": "1731c933bcccaa8781653428cb6a5bb413d0b9411825ae4d97212f137ea6e438",
+      "title": "Рисуем среди цветов",
+      "description": "Творчество в саду",
+      "width": 1080,
+      "height": 1440
+    },
+    {
+      "type": "video",
+      "file": "/media/gallery/drawing-in-the-park.mp4",
+      "poster": "/media/gallery/drawing-in-the-park-poster.webp",
+      "source_file": "19398152489621.mp4",
+      "source_sha256": "d3375c1b2aa471bf777433c63d346635af92bf66f53088615cef66244e0ece62",
+      "title": "Рисуем в парке",
+      "description": "Зарисовки с натуры на свежем воздухе",
+      "width": 576,
+      "height": 1024,
+      "duration": 8.681
+    },
+    {
+      "type": "video",
+      "file": "/media/gallery/lilies-close-up.mp4",
+      "poster": "/media/gallery/lilies-close-up-poster.webp",
+      "source_file": "19398219729557.mp4",
+      "source_sha256": "57332b5aab1520ab7b2cc0a08da2909d23ea56dee121840d461c52f3c4acba11",
+      "title": "Лилии крупным планом",
+      "description": "Детали цветочного рисунка",
+      "width": 576,
+      "height": 1024,
+      "duration": 22.155467
+    }
+  ]
+}

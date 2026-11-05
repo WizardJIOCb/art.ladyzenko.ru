@@ -130,6 +130,25 @@ try {
       }
       assert(await evaluate(`document.querySelector('#about img[src="/media/anna-kalimullina.webp"]').naturalWidth > 0`), 'Real portrait loads');
       assert(await evaluate(`document.querySelectorAll('#gallery img[src^="/media/works/"]').length >= 6`), 'Real works present');
+      assert(await evaluate(`document.querySelectorAll('#gallery-grid img[src^="/media/gallery/"]').length === 13`), 'All thirteen supplied photos present');
+      assert(await evaluate(`document.querySelectorAll('#gallery video').length === 2 && [...document.querySelectorAll('#gallery video')].every(v => v.preload === 'none' && v.controls && v.playsInline && !v.autoplay && v.poster)`), 'Clips have posters and load only on demand');
+      assert(await evaluate(`performance.getEntriesByType('resource').filter(r => r.name.includes('/media/gallery/') && r.name.endsWith('.mp4')).length === 0`), 'No video downloaded before playback');
+      await evaluate(`Promise.all([...document.querySelectorAll('#gallery-grid img')].map(img => { img.loading = 'eager'; return img.decode(); }))`);
+      await evaluate(`document.querySelector('.gallery-archive').open = true`);
+      await evaluate(`Promise.all([...document.querySelectorAll('.gallery-archive img')].map(img => { img.loading = 'eager'; return img.decode(); }))`);
+      await evaluate(`document.querySelector('.gallery-archive .${isClassic ? 'gallery-item' : 'work'}').click()`);
+      assert(await evaluate(`!document.getElementById('lightbox').hidden`), 'Archived photos still open');
+      await evaluate(`document.getElementById('${isClassic ? 'lightbox-close' : 'lightboxClose'}').click(); document.querySelector('.gallery-archive').open = false`);
+      await evaluate(`document.querySelector('.gallery-clips').scrollIntoView({behavior:'instant',block:'start'})`);
+      await sleep(400);
+      const videoShot = await command('Page.captureScreenshot', { format: 'png', fromSurface: true });
+      writeFileSync(`shots/videos-${name}-${width}.png`, Buffer.from(videoShot.data, 'base64'));
+      for (let clip = 0; clip < 2; clip++) {
+        await evaluate(`(async () => { const v = document.querySelectorAll('#gallery video')[${clip}]; v.muted = true; await v.play(); })()`);
+        await sleep(350);
+        assert(await evaluate(`(() => { const v = document.querySelectorAll('#gallery video')[${clip}]; return !v.error && !v.paused && v.currentTime > 0 && v.videoWidth === 576 && v.videoHeight === 1024; })()`), 'Video decodes and plays in portrait orientation');
+        await evaluate(`document.querySelectorAll('#gallery video')[${clip}].pause()`);
+      }
       leadMock = 'error';
       const requestCount = formRequests.length;
       await evaluate(`(() => {

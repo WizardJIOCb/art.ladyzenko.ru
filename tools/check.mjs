@@ -8,7 +8,7 @@ let count = 0;
 for (const path of ['/', '/new/', '/new2/', '/404.html']) {
   const html = readFileSync(resolve(root, '.' + (path.endsWith('/') ? path + 'index.html' : path)), 'utf8');
   const ids = new Set([...html.matchAll(/\bid="([^"]+)"/g)].map(m => m[1]));
-  for (const match of html.matchAll(/\b(?:src|href|data-src)="([^"]+)"/g)) {
+  for (const match of html.matchAll(/\b(?:src|href|data-src|poster)="([^"]+)"/g)) {
     const ref = match[1];
     if (ref.startsWith('#')) {
       assert(ids.has(ref.slice(1)), `${path}: missing anchor ${ref}`);

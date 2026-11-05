@@ -8,3 +8,27 @@
 .lead-error { grid-column: 1 / -1; padding: 12px; border: 1px solid #d19784; border-radius: 4px; color: #8a2d18; background: #fff4ed; font-size: 14px; }
 .lead-error[hidden] { display: none; }
 [aria-invalid="true"] { outline: 2px solid #b5482b; outline-offset: 2px; }
+
+/* Shared photo archive and click-to-play clips for all three versions. */
+.gallery-upload-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: auto; gap: 24px; }
+.gallery-upload { aspect-ratio: 4 / 5; }
+.gallery-photo-button { display: block; width: 100%; padding: 0; border: 0; background: transparent; cursor: zoom-in; }
+.gallery-photo-button .frame { display: block; }
+.gallery-photo-button:focus-visible, .gallery-archive summary:focus-visible, .gallery-video-card video:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+.gallery-clips, .gallery-archive { margin-top: 40px; }
+.gallery-subtitle { margin: 0 0 12px; font-size: 24px; line-height: 32px; }
+.gallery-video-note { max-width: 680px; margin: 0 0 24px; font-size: 16px; line-height: 24px; }
+.gallery-video-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; max-width: 800px; }
+.gallery-video-card { margin: 0; min-width: 0; }
+.gallery-video-card video { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; object-fit: contain; background: #181818; }
+.gallery-video-card figcaption { margin-top: 12px; font-size: 18px; line-height: 28px; }
+.gallery-video-card figcaption span { display: block; margin-top: 4px; font-size: 14px; line-height: 20px; opacity: .8; }
+.gallery-archive summary { width: fit-content; padding: 12px 0; cursor: pointer; font-size: 18px; line-height: 28px; text-wrap: pretty; }
+.gallery-archive summary:hover { text-decoration: underline; text-underline-offset: 4px; }
+.gallery-archive[open] > .gallery-grid { margin-top: 24px; }
+@media (max-width: 600px) {
+  .gallery-upload-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 8px; }
+  .gallery-upload-grid .gallery-item figcaption { font-size: 14px; line-height: 20px; }
+  .gallery-upload-grid .gallery-item figcaption span { font-size: 12px; line-height: 16px; }
+  .gallery-video-grid { grid-template-columns: minmax(0, 1fr); max-width: 400px; }
+}
