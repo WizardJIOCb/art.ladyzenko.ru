@@ -1,9 +1,10 @@
 import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';
-import { mkdirSync, mkdtempSync, writeFileSync } from 'node:fs';
+import { mkdirSync, mkdtempSync, writeFileSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 const base = (process.argv[2] || 'http://127.0.0.1:8765').replace(/\/$/, '');
+const galleryPhotoCount = JSON.parse(readFileSync('docs/gallery-upload-sources.json', 'utf8')).media.filter(m => m.type === 'photo').length;
 const chromePath = process.env.CHROME_PATH || 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
 mkdirSync('.scratch', { recursive: true });
 mkdirSync('shots', { recursive: true });
@@ -130,7 +131,7 @@ try {
       }
       assert(await evaluate(`document.querySelector('#about img[src="/media/anna-kalimullina.webp"]').naturalWidth > 0`), 'Real portrait loads');
       assert(await evaluate(`document.querySelectorAll('#gallery img[src^="/media/works/"]').length >= 6`), 'Real works present');
-      assert(await evaluate(`document.querySelectorAll('#gallery-grid img[src^="/media/gallery/"]').length === 13`), 'All thirteen supplied photos present');
+      assert(await evaluate(`document.querySelectorAll('#gallery-grid img[src^="/media/gallery/"]').length === ${galleryPhotoCount}`), 'All supplied photos present');
       assert(await evaluate(`document.querySelectorAll('#gallery video').length === 2 && [...document.querySelectorAll('#gallery video')].every(v => v.preload === 'none' && v.controls && v.playsInline && !v.autoplay && v.poster)`), 'Clips have posters and load only on demand');
       assert(await evaluate(`performance.getEntriesByType('resource').filter(r => r.name.includes('/media/gallery/') && r.name.endsWith('.mp4')).length === 0`), 'No video downloaded before playback');
       await evaluate(`Promise.all([...document.querySelectorAll('#gallery-grid img')].map(img => { img.loading = 'eager'; return img.decode(); }))`);

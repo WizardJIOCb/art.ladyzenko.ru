@@ -133,6 +133,16 @@
       "height": 1440
     },
     {
+      "type": "photo",
+      "file": "/media/gallery/daisy-bouquet.webp",
+      "source_file": "0285e8d7-f5b3-4f76-9b20-ebff13b83de0.jpg",
+      "source_sha256": "291a4a5cbc3cc55bcd76618d6cf970c513cf00343703ede11cbba93dd9293faf",
+      "title": "Букет ромашек",
+      "description": "Цветочный натюрморт",
+      "width": 1080,
+      "height": 1440
+    },
+    {
       "type": "video",
       "file": "/media/gallery/drawing-in-the-park.mp4",
       "poster": "/media/gallery/drawing-in-the-park-poster.webp",
